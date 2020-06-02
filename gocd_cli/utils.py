@@ -1,6 +1,6 @@
 import os.path
 import pkgutil
-import pwd
+# import pwd
 import re
 import string
 
@@ -47,12 +47,13 @@ def expand_user(path):
     if not path.startswith('~'):
         return path
 
-    if os.name == 'posix':
-        user = pwd.getpwuid(os.geteuid())
-        return path.replace('~', user.pw_dir, 1)
-    else:
-        return os.path.expanduser(path)
+    # if os.name == 'posix':
+    #     user = pwd.getpwuid(os.geteuid())
+    #     return path.replace('~', user.pw_dir, 1)
+    # else:
+    #     return os.path.expanduser(path)
 
+    return os.path.expanduser(path)
 
 def is_file_readable(path):
     path = expand_user(path)
